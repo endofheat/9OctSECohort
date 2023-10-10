@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 1 Exercise 3</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            align-items: stretch;
+        }
+
+        .column {
+            background: goldenrod;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="column" id="column1">
+            <h1 id="heading1">Hello</h1>
+            <label>Change the heading:</label>
+            <input id="replacetextField1" name="replacetextField">
+            <button onclick="changeMe1()" id="changeMe1">Change Me</button>
+        <script>
+            function changeMe1() {
+                document.getElementById("column1").style.backgroundColor = 'red'
+                document.getElementById("heading1").innerText = document.getElementById("replacetextField1").value
+                document.getElementById("heading1").style.color = 'white'
+                document.getElementById("changeMe1").style.backgroundColor = 'white'
+                document.getElementById("changeMe1").style.color = 'red'
+                document.getElementById("changeMe1").innerText = 'YAY!'            
+            }
+        </script>
+        </div>
+
+        <div class="column" id="column2">
+            <h1 id="heading2">World</h1>
+            <label>Change the heading:</label>
+            <input id="replacetextField2" name="replacetextField">
+            <button onclick="changeMe2()" id="changeMe2">Change Me</button>
+        <script>
+            function changeMe2() {
+                document.getElementById("column2").style.backgroundColor = 'white'
+                document.getElementById("heading2").innerText = document.getElementById("replacetextField2").value
+                document.getElementById("heading2").style.color = 'red'
+                document.getElementById("changeMe2").style.backgroundColor = 'red'
+                document.getElementById("changeMe2").style.color = 'white'
+                document.getElementById("changeMe2").innerText = 'YAY!'            
+            }
+        </script>
+        </div>
+    </div>
+</body>
+
+</html>
