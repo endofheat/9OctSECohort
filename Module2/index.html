@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="an index page">
+  <meta name="keywords" content="HTML">
+  <meta name="author" content="Akira Li">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+
+      /* I. Selectors */
+      /* Put styles for sections 1.1, 1.2, 1.3 and 1.4 here */
+    article {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid lightblue;
+    }
+
+    .style-me1 {
+      color: red;
+    }
+
+    #style-me2 {
+      color: blue;
+    }
+
+    #style-me2.style-me1 {
+      color: purple;
+    }
+
+
+      /* II. Box model and common properties */
+    .box {
+      background-image: url("images/white-cloud.png");
+      background-repeat: repeat-x;
+      background-size: 50%;
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+      box-sizing: content-box;
+      border: 5px dotted lightskyblue;
+      border-radius: 3%;
+      text-overflow: clip;
+    }
+
+      /* III. Position */
+    .position-absolute {
+      position: absolute;
+      top: 50%;
+      right: 0%;
+      width: 50px;
+      height: 50px;
+      border: 1px solid blue;
+
+    }
+
+    .position-relative {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border: 3px solid red;
+
+    }
+
+
+      /* IV. Styling text */
+    /* tried this in flexbox.html*/
+
+      /* VI. calc() */
+      /*???*/
+    .calc-style {
+      width: cal(100% - 150px);
+      border: 1px solid black;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <!-- works like <a href="/index.html">Home</a> -->
+      <a href="/Module2/index.html">Home</a>
+      <a href="/Module2/form.html">Form</a>
+    </nav>
+  </header>
+
+  <h1>My HTML learning journey</h1>
+
+  <article>
+    <h2>Learning elements - div, span, p, pre, ul, li, ol, article</h2>
+    <div>Overwatch</div>
+    <div>Resident Evil</div>
+    <div>Diablo</div>
+    <span>Devil May Cry</span>
+    <span>Baldur's Gate</span>
+    <span>Tom Clancy's Rainbow Six Siege</span>
+
+    <p>
+      p represents paragraph
+    </p>
+    <pre>
+    Text in         a pre element
+    is displayed in a fixed-width
+    font, and it preserves
+    both      spaces and
+    line breaks
+  </pre>
+
+    <ul>
+      <li>hi</li>
+      <li>this</li>
+      <li>is</li>
+      <li>unordered</li>
+      <li>list</li>
+    </ul>
+
+    <ol>
+      <li>and</li>
+      <li>this</li>
+      <li>is</li>
+      <li>ordered</li>
+      <li>list</li>
+    </ol>
+  </article>
+
+  <article>
+    <h2></h2>
+    <table>
+      <tr>
+        <th colspan="2">Name</th>
+        <th>Age</th>
+        <th>Country</th>
+      </tr>
+      <tr>
+        <td>Fake Human</td>
+        <td>99</td>
+        <td>Azeroth</td>
+        <td>oh hi</td>
+      </tr>
+      <tr>
+        <td>Harry Depp</td>
+        <td>28</td>
+        <td>Britain</td>
+        <td>hi</td>
+      </tr>
+      <tr>
+        <td rowspan="2 ">John Smith</td>
+        <td>35</td>
+        <td>USA</td>
+        <td>hihihi</td>
+      </tr>
+      <tr>
+        <td>Ram Krishna</td>
+        <td>19</td>
+        <td>Nepal</td>
+        <td>hello</td>
+      </tr>
+    </table>
+  </article>
+
+  <img src="https://picsum.photos/200/300" alt="" />
+
+  <video loop="true" autoplay width="250">
+    <source src="/Module2/assets/flower.webm" type="video/webm">
+    <source src="assets/flower.mp4" type="video/mp4">
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+
+  <audio loop="true" autoplay src="/Module2/assets/t-rex-roar.mp3">
+    Your browser does not support the <code>audio</code> element.
+  </audio>
+
+  <section class="box">
+    A mysterious box is in front of you
+  </section>
+
+  <section class="position-relative">
+    test
+    <section class="position-absolute">
+      test again
+    </section>
+  </section>
+
+  <section class="box">
+    <section class="calc-style">
+      test
+    </section>
+  </section>
+  
+
+  <main>
+  </main>
+  <footer>Copyright 2021 &copy;</footer>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="an index page">
+    <meta name="keywords" content="flexbox">
+    <meta name="author" content="Akira Li">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Flexbox</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Kalam&family=Playpen+Sans:wght@500&display=swap');        header, main {
+            display: flex;
+        }
+
+        header {
+            border: 2px dotted white;
+            background-color: beige;
+            justify-content: space-between;
+            padding: 1em;
+        }
+
+        main {
+            border: 2px dotted white;
+            background-color: lightcyan;
+        }
+
+        #logo {
+            background-image: url("/Module2/images/logo-paw.png");
+            background-position: center;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            width: 50px;
+            height: 50px;
+            display: block;
+        }
+
+        nav {
+            border: 1px dashed darkgoldenrod;
+            text-align: right;
+            color: darkgoldenrod;
+            min-width: 200px;
+        }
+
+        section {
+            border: 2px solid lightblue;
+            color: teal;
+            min-height: 500px;
+            width:75%;
+        }
+
+        aside {
+            border: 2px solid lightyellow;
+            color: burlywood;
+            min-height: 500px;
+            width: 25%;
+        }
+
+        h1 {
+            font-family: 'Bungee Spice', sans-serif;
+        }
+
+        h2 {
+            font-family: 'Playpen Sans', cursive;
+            text-align: center;
+        }
+
+        p {
+            font-family: 'Kalam', cursive;
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div><a href="/Module2/flexbox.html" alt="a dog paw, it is the logo of this website" id="logo"></a></div>
+        <h1>Hi, My Pawerful friends</h1>
+        <nav>nav</nav>
+    </header>
+    <main>
+        <section>
+            <h2>Doggy, YAY</h2>
+            <p style="text-align: justify;">Dogs are the most variable mammal on earth with around 450 globally recognized dog breeds. Dogs are adorable, dogs are friends of human. The coder of this website is a cat person but they also like dogs! (Send me your dogs and / or your cats pictures then we will be best friends)</p>
+            <p style="text-align: center;"><img src="/Module2/images/golden-retriever-puppy.jpg" width=75% alt="A golden retriever puppy picture. "/></p>
+        </section>
+        <aside>sidebar</aside>
+    </main>
+</body>
+
+</html>

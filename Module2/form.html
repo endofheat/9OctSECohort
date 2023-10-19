@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css"/>    
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- works like <a href="/index.html">Home</a> -->
+            <a href="/Module2/index.html">Home</a>
+
+        </nav>
+    </header>
+    <form method="POST" action="http://localhost:3000/profile">
+        <div>
+            <label for="firstName">First name:</label>
+            <input type="text" name="firstName" id="firstName" />
+        </div>
+        <div>
+            <label for="LastName">Last name:</label>
+            <input type="text" name="lastName" id="lastName" />
+        </div>
+        <div>
+            <label for="radio">Radio</label>
+            <input type="radio" name="radio" id="radio" value="radio" />
+        </div>
+        <div>
+            <label for="checkbox">checkbox</label>
+            <input type="checkbox" name="checkbox" id="checkbox" value="checkbox" />
+        </div>
+        <div>
+            <label for="games">Choose a game:</label>
+
+            <select name="games" id="games">
+                <option value="overwatch">Overwatch</option>
+                <option value="baldursGate">Baldur's Gate</option>
+                <option value="wow">World of Warcraft</option>
+                <option value="apex">Apex Legends</option>
+
+            </select>
+        </div>
+
+        <button type="submit">Submit form</button>
+        </div>
+
+    </form>
+    <footer>Copyright 2021 &copy;</footer>
+
+
+</body>
+
+</html>
