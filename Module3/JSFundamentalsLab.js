@@ -149,9 +149,9 @@ result += 'less than 10';
 result += 'greater than 10';
 }
 
-function resultRewrite(lessThan10) {
-    return lessThan10 ? 'less than 10' 
-    : 'greater than 10'
+function resultRewrite(a, b) {
+  let result = a + b;  
+  return result == 10 ? ( 'less than 10') : 'greater than 10'
 }
 
 console.log(resultRewrite(true))
@@ -163,6 +163,22 @@ syntax. Test each version to make sure they work the same. */
 function getGreeting(name) {
 return 'Hello ' + name + '!';
 }
+
+const getGreetingVerA = function (name) {
+    return 'Hello ' + name + '!';
+}
+
+console.log(getGreetingVerA('Jo'));
+console.log(getGreetingVerA('Chris'));
+console.log(getGreetingVerA('Gareth'));
+console.log(getGreetingVerA('Akira'));
+
+const getGreetingVerB = (name) => 'Hello ' + name + '!';
+
+console.log(getGreetingVerB('Jo'));
+console.log(getGreetingVerB('Chris'));
+console.log(getGreetingVerB('Gareth'));
+console.log(getGreetingVerB('Akira'));
 
 /* 6. a) Complete the inigo object by adding a lastName property and including it in the
 greeting.
@@ -180,12 +196,11 @@ const rugen = {
 };
 const inigo = {
   firstName: "Inigo",
+  lastName: "Montoya",
   greeting(person) {
-    let greeting = `Hello ${person.name}, my name is ${this.firstName}. `;
-    console.log(greeting + this.getCatchPhrase(person));
-  },
-  getCatchPhrase(person) {
-    return "Nice to meet you.";
+    let greeting = `Hello ${person.name}, my name is ${this.firstName} ${this.lastName}. `;
+    const getCatchPhrase = (person) => person.numFingers == 6 ? "You killed my father. Prepare to die. " : "";
+    console.log(greeting + getCatchPhrase(person));
   },
 };
 inigo.greeting(westley);
@@ -202,27 +217,43 @@ full time console messages
 d) Test your object by chaining all the method calls together in different combinations. */
 const basketballGame = {
   score: 0,
+  foul: 0,
   freeThrow() {
-    this.score++;
+    return this.score++;
   },
   basket() {
-    this.score += 2;
+    return this.score += 2;
   },
   threePointer() {
-    this.score += 3;
+    return this.score += 3;
+  },
+  aFoul() {
+    return this.foul++;
+
   },
   halfTime() {
-    console.log("Halftime score is " + this.score);
+    console.log("Halftime score is " + this.score + ", fouls: " + this.foul);
+  },
+
+  fullTime() {
+    console.log("Fulltime score is " + this.score + ", fouls: " + this.foul);
   },
 };
 //modify each of the above object methods to enable function chaining as below:
-basketballGame
-  .basket()
-  .freeThrow()
-  .freeThrow()
-  .basket()
-  .threePointer()
-  .halfTime();
+
+basketballGame.basket()
+basketballGame.freeThrow()
+basketballGame.freeThrow()
+basketballGame.basket()
+basketballGame.threePointer()
+basketballGame.aFoul()
+basketballGame.halfTime()
+basketballGame.freeThrow()
+basketballGame.basket()
+basketballGame.aFoul()
+basketballGame.threePointer()
+basketballGame.fullTime()
+
 
 /* 8. The object below represents a single city.
 a) Write a function that takes an object as an argument and uses a for...in loop to access
@@ -249,7 +280,7 @@ e) Change the way the moreSports and cat2 variables are created to ensure the
 originals remain independent */
 let teamSports = ["Hockey", "Cricket", "Volleyball"];
 let dog1 = "Bingo";
-let cat1 = { name: "Fluffy", breed: "Siberian" };
+let cat1 = { name: "Fluffy", breed: "Siberian" }; 
 
 /* 10. The following constructor function creates a new Person object with the given name and
 age values.
