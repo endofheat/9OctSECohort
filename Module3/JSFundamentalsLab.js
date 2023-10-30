@@ -141,22 +141,23 @@ if (1) console.log("positive is true");
 
 /* 4. Rewrite this if using the ternary/conditional operator '?'. Test it with different values for a
 and b. What does the ‘+=’ do? */
-let a = 2, b = 3;
+/* let a = 2, b = 3;
 let result = `${a} + ${b} is `;
 if (a + b < 10) {
 result += 'less than 10';
 } else {
 result += 'greater than 10';
-}
+}; */
 
-function resultRewrite(a, b) {
-  let result = a + b;  
-  return result == 10 ? ( 'less than 10') : 'greater than 10'
-}
+let a = 5, b = 15;
 
-console.log(resultRewrite(true))
-console.log(resultRewrite(false))
-console.log(resultRewrite(null))
+//function resultRewrite(a, b) {
+  let result = `${a} + ${b} is`;  
+  result += (a+b<10) ? ' less than 10' : ' greater than 10';
+   /* result < 10 ? (return 'less than 10' ): return 'greater than 10'; */
+//}
+
+console.log(result)
 
 /* 5. Rewrite the following function using: a) function expression syntax, and b) arrow function
 syntax. Test each version to make sure they work the same. */
@@ -297,3 +298,4 @@ function Person(name, age) {
   this.age = age;
   this.human = true;
 }
+
