@@ -218,3 +218,186 @@ function debounce3(func, ms) {
 let describeCar = car.description.bind(car);
 setTimeout(describeCar, 300);
 
+/* 6. Use the Function prototype to add a new delay(ms) function to all functions, which can
+  be used to delay the call to that function by ms milliseconds. */
+  function multiply(a, b) {
+    console.log(a * b);
+  }
+
+  function divide(c,d) {
+    console.log(c / d);
+  }
+
+  function multiply2(number1, number2, number3, number4) {
+    console.log(number1 * number2 * number3 * number4);
+  }
+  //multiply.delay(500)(5, 5); // prints 25 after 500 milliseconds
+  /* a) Use the example multiply function below to test it with, as above, and assume that all
+  delayed functions will take two parameters
+  b) Use apply to improve your solution so that delayed functions can take any number of
+  parameters
+  c) Modify multiply to take 4 parameters and multiply all of them, and test that your
+  delay prototype function still works. */
+
+ Function.prototype.delay = function (ms) {
+  let originalFunction = this;
+  return function (){
+    //setTimeout(originalFunction, ms, num1, num2, num3, num4);
+    setTimeout(() => originalFunction.apply(this, arguments), ms)
+  };
+  }
+  /* multiply.delay(500)(5, 5);
+  divide.delay(1000)(25, 5); */
+  multiply2.delay(1000)(1, 2, 3, 4);
+
+  /* 7. In JavaScript, the toString method is used to convert an object to a string representation.
+  By default, when an object is converted to a String, it returns a string that looks something
+  like [object Object].
+  However, we can define our own toString methods for custom objects to provide a more
+  meaningful string representation.
+  a) Define a custom toString method for the Person object that will format and print
+  their details
+  b) Test your method by creating 2 different people using the below constructor function
+  and printing them
+  c) Create a new constructor function Student that uses call to inherit from Person and
+  add an extra property cohort */
+  
+  /* d) Add a custom toString for Student objects that formats and prints their details. Test
+  with 2 students. */
+  function Person(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+
+  Person.prototype.toString = function () {
+    return this.name + " is a " + this.age + " years old " + this.gender;
+  }
+
+  const person1 = new Person("James Brown", 73, "male");
+  console.log("person1: " + person1); //prints person1: [object Object]
+  const person2 = new Person("James Bond", 25, "male");
+  const person3 = new Person("Toothless", 6, "baby");
+  console.log("person2: " + person2);
+  console.log("the one and only cat: " + person3);
+
+  function Student(name, age, gender, cohort) {
+    Person.call(this, name, age, gender);
+    this.cohort = cohort;
+  }
+
+  Student.prototype.toString = function () {
+    return this.name + " is a " + this.age + " years old " + this.gender + " and is taking " + this.cohort + "course";
+  }
+  const student1 = new Student("Rick", 15, "male", "Oct '23");
+  const student2 = new Student("Morty", 70, "male", "Oct '23");
+  console.log("student1: " + student1);
+  console.log("student2: " + student2); 
+
+  /* 8. The following DigitalClock class uses an interval to print the time every second once
+  started, until stopped. */
+  class DigitalClock {
+    constructor(prefix) {
+      this.prefix = prefix;
+    }
+    display() {
+      let date = new Date();
+      //create 3 variables in one go using array destructuring
+      let [hours, mins, secs] = [
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+      ];
+      if (hours < 10) hours = "0" + hours;
+      if (mins < 10) mins = "0" + mins;
+      if (secs < 10) secs = "0" + secs;
+      console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
+    }
+    stop() {
+      clearInterval(this.timer);
+    }
+    start() {
+      this.display();
+      this.timer = setInterval(() => this.display(), 1000);
+    }
+  }
+  const myClock = new DigitalClock("my clock:");
+  myClock.start();
+  /* a) Create a new class PrecisionClock that inherits from DigitalClock and adds the
+  parameter precision – the number of ms between 'ticks'. This precision parameter
+  should default to 1 second if not supplied.
+  
+  b) Create a new class AlarmClock that inherits from DigitalClock and adds the
+  parameter wakeupTime in the format hh:mm. When the clock reaches this time, it
+  should print a 'Wake Up' message and stop ticking. This wakeupTime parameter should
+  default to 07:00 if not supplied. */
+
+  class PrecisionClock extends DigitalClock {
+    constructor(prefix, precision) {
+      super(prefix);
+      this.precision = precision ? precision : 1000;
+    };
+
+      start() {
+      this.display();
+      this.timer = setInterval(() => this.display(), this.precision);
+    }
+  }
+
+  const newClock = new PrecisionClock("a new clock: ", 2000);
+  newClock.start();
+
+  class AlarmClock extends DigitalClock {
+    constructor(prefix, wakeupTime) {
+      super(prefix);
+      this.wakeupTime = wakeupTime ? wakeupTime : '07:00';
+    }
+
+    display() {
+      let timeParts = this.wakeupTime.split(':');
+      let [wakeUpHr, wakeUpMins] = timeParts;
+
+      let date = new Date();
+      //create 3 variables in one go using array destructuring
+      let [hours, mins, secs] = [
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+      ];
+      if (hours < 10) hours = "0" + hours;
+      if (mins < 10) mins = "0" + mins;
+      if (secs < 10) secs = "0" + secs;
+      
+      if(parseInt(wakeUpHr) >= hours && parseInt(wakeUpMins) > mins ) {
+      console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
+      } else {
+        super.stop();
+        console.log('Wake up! Wake up! Time to shine! ')
+
+      }
+    }
+
+    start() {
+      this.display();
+      this.timer = setInterval(() => this.display(), 1000);
+    }
+  }
+
+  const alarmClock = new AlarmClock("alarm clock: ",'11:26');
+  alarmClock.start();
+
+  /* 9. We can delay execution of a function using setTimeout, where we need to provide both
+  the callback function and the delay after which it should execute.
+  a) Create a promise-based alternative randomDelay() that delays execution for a
+  random amount of time (between 1 and 20 seconds) and returns a promise we can use
+  via .then(), as in the starter code below
+  b) If the random delay is even, consider this a successful delay and resolve the promise,
+  and if the random number is odd, consider this a failure and reject it
+  c) Update the testing code to catch rejected promises and print a different message
+  d) Try to update the then and catch messages to include the random delay value */
+  function randomDelay() {
+    let promise = new Promise (function() {
+
+    })
+  }
+  randomDelay().then(() => console.log("There appears to have been a delay."));
