@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8"/>
+        <meta name = "keywords" content = "anime, manga"/>
+        <meta name = "description" content = "All you want to know about your favourite anime & manga. "/>
+        <meta name = "author" content = "Akira Li"/>
+        <meta name = "viewpoint" content = "width=device-width, initial-scale=1.0"/>
+        <base href = "manga.html" target = "_self"/>
+        <link rel = "stylesheet" href = "style.css"/> 
+        <title>Manga - Animanga Info</title>
+        <link rel = "icon" type = "image/x-icon" href="./images/favicon.ico"/> <!-- don't forget to make an ico and add it to the folder -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Cairo+Play&family=Nabla&display=swap');
+          </style>
+      </head>
+      
+      <template id="temp">
+        <div class="col-lg-3 col-md-6 col-sm-12"> <!-- 12/4=3accross md - medium devices -->
+            <div class="card">
+                <img class="img-fluid">
+                <div class="card-body">
+                <h5 class="card-title">Saturn</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="button">
+                    Find out more
+                    <span class="material-symbols-outlined">
+                        →
+                      </span>
+                  </a>    
+            </div>
+        </div>
+    </div>
+    </template>
+
+      <body>
+          <header>
+              
+              <h1>Animanga</h1>
+              <h2>- your one stop favourite anime & manga database.</h2>
+              <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
+                  <div class="container-fluid">
+                    <div><a href target = "_self" alt = "A letter 'A', the logo of the website. " id = "logo"></a></div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav"> <!-- auto-populated nav items from navbar.js -->
+                    </div>
+                    <form class="form-inline my-2 my-lg-0 d-flex">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                  </div>
+              </nav>
+            </header>
+            
+            <div id="here" class="row"></div>
+            <script src="./js/navbar.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            <script>
+              fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php")
+              .then((response) => response.json())
+              .then((json) => {console.log(json.data); newsCards(json.data)}); //this works because the function newscars is not defined by let or const
+        
+            function newsCards(json) {
+            let temp = document.getElementById('temp'); //template is stored in temp
+             document.getElementById('here').innerText= "";
+            for (let i of json) { //cycles through each item in the next news card
+                console.log(i);
+                clon = temp.content.cloneNode(true);    // clones the template
+                clon.querySelector('.card-title').innerText=i.name;  //inserts title from object array into 'card-title'
+                clon.querySelector('.card-text').innerText=i.type; // insers content from object array into 'card-text'
+                clon.querySelector('.img-fluid').src=i.card_images[0].image_url_cropped;
+                document.getElementById('here').appendChild(clon); // implements the changes
+            }
+        }
+            </script>
+        </body>
+</html>
