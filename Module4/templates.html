@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <template id="card-template">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title"></div>
+                <div class="card-text"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id = "artist-portfolio">
+        <div class="portfolio">
+            <div class="portfolio-body">
+                <div class="artist-name"></div>
+                <img class="artist-portfolio">
+            </div>
+        </div>
+    </template>
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e3f2fd;
+        }
+
+        .card {
+            padding: 10px;
+            border: 1px solid;
+            width: 200px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 3em;
+            padding: 0 0 10px 0;
+        }
+
+        .card-description {
+            font-weight: 400;
+            font-size: 2em
+        }
+
+        .artist-name {
+            border: 1px dotted;
+
+        }
+
+        .artist-portfolio {
+            border: 1px dotted;
+
+        }
+
+        #portfolio {
+            border: 1px dotted;
+
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="card-list"></div>
+    <div id="portfolio"></div>
+
+    <script>
+        const data = [
+                {name: 'bob', age: 23},
+                {name: 'alice', age: 39}
+        ];
+
+        function getCards() {
+            return new Promise(resolve => {
+                setTimeout(function(){
+                    // resolve the promise with the car data after 1s
+                    resolve(data)
+                }, 1000)
+            })
+        }
+
+        function addCard(personData) {
+            const template = document.getElementById("card-template").content.cloneNode(true);
+            // populate the template
+            template.querySelector('.card-title').innerText = personData.name;
+            template.querySelector('.card-text').innerText = personData.age;
+            // include the populated template into the page
+            document.querySelector('#card-list').appendChild(template);
+        }
+        getCards().then((personDatas) => personDatas.forEach(personData => addCard(personData) ))
+        
+    </script>
+    
+    <script>
+        const artist = {
+                name: "Van Gogh",
+                portfolio: [
+                    {
+                        title: "portrait",
+                        url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image"},
+                    {
+                        title: "sky",
+                        url: "https://mymodernmet.com/wp/wp-conten/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg" },
+                ]
+            };
+
+        function getArtistProfile() {
+            return new Promise(resolve => {
+                setTimeout(function(){
+                    // resolve the promise with the car data after 1s
+                    resolve(artist.portfolio)
+                }, 1000)
+            })
+        }
+
+        function addArtistProfile(artistData) {
+            const template = document.getElementById("artist-portfolio").content.cloneNode(true);
+            template.querySelector('.artist-name').innerText = artistData.title;
+            template.querySelector('.artist-portfolio').src = artistData.url;
+            document.querySelector('#portfolio').appendChild(template);
+        }
+        getArtistProfile().then((artistData) => artistData.forEach(artistData => addArtistProfile(artistData)));
+
+        
+    </script>
+
+    
+
+
+
+</body>
+
+</html>

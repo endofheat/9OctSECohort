@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<template id="news-template">
+    <div class="card col-8" style="width: 18rem; margin:10px">
+        <div class="news-body">
+            <h5 class="news-title">news title</h5>
+            <p class="news-content">news text.</p>
+        </div>
+    </div>
+</template>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>news center</title>
+</head>
+
+<body>
+
+    <div id = "news-list" class = "row"></div>
+    <form action="" id="addNews">
+        <label for="">News Item Title: </label><input type="text" id="addTitle">
+    </br>
+        <label for="">News Item Content: </label><input type="text" id="addContent">
+    </form>
+    <button onclick="addToNews()">Add News Item</button>
+    <script>
+        let news = [
+                {
+                    id: 1, title: 'Election Results',
+                    content: "Newly elected minister..."
+                },
+                {
+                    id: 2, title: 'Sporting Success',
+                    content: "World Cup winners..."
+                },
+                {
+                    id: 3, title: 'Tornado Warning',
+                    content: "Residents should prepare..."
+                }
+        ]; 
+
+        function getNews() {
+            return new Promise(resolve => {
+                setTimeout(function(){
+                    document.querySelector('#news-list').innerText = "";
+                    resolve(news)
+                }, 1000)
+            })
+        }
+        getNews().then((news) => console.log(news))
+        function addToNews() {
+            let title = document.getElementById('addTitle').value;
+            let content = document.getElementById('addContent').value;
+            news.push({id:news.length+1, title:title, content:content});
+            getNews().then((news) => news.forEach(newNews => addNews(newNews)));
+        }
+
+        function reloading() {
+            getNews().then((news) => news.forEach(newNews => addNews(newNews)));
+        }
+
+        function addNews(newNews) {
+            console.log(newNews);
+            const template = document.getElementById("news-template").content.cloneNode(true);
+            template.querySelector('.news-title').innerText = newNews.title;
+            template.querySelector('.news-content').innerText = newNews.content;
+            document.querySelector('#news-list').appendChild(template);
+        }
+        setInterval(reloading(), 1000);
+    </script>
+</body>
+
+</html>
