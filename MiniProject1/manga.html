@@ -61,7 +61,8 @@
             <script>
               fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php")
               .then((response) => response.json())
-              .then((json) => {console.log(json.data); newsCards(json.data)}); //this works because the function newscars is not defined by let or const
+              .then((json) => {console.log(json.data); 
+              newsCards(json.data)}); //this works because the function newscars is not defined by let or const
         
             function newsCards(json) {
             let temp = document.getElementById('temp'); //template is stored in temp
