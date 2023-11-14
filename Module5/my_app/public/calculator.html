@@ -1,0 +1,23 @@
+<html lang="en">
+
+<head>
+    <title>Calculator Example</title>
+</head>
+
+<body>
+    <div>Result
+        <span id="result"></span>
+    </div>
+</body>
+<script>
+    let num1 = 0;
+    let num2 = 0;
+
+    fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result").innerHTML = data.result;
+        })
+</script>
+
+</html>
