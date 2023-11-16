@@ -5,19 +5,66 @@
 </head>
 
 <body>
+    <label>First number: <input id="num1" name="num1" type="number" value="0"></label>
+    <label>Second number: <input id="num2" name="num2" type="number" value="0"></label>
+    <button onclick="addFunction()">Add</button>
+    <button onclick="subtractFunction()">Subtract</button>
+    <button onclick="multiplyFunction()">Multiply</button>
+    <button onclick="divideFunction()">divide</button>
+
     <div>Result
         <span id="result"></span>
     </div>
 </body>
-<script>
-    let num1 = 0;
-    let num2 = 0;
 
-    fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("result").innerHTML = data.result;
-        })
+<script>
+    function addFunction() {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+
+        fetch(`/calculator/add?num1=${num1}&num2=${num2}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById("result").innerHTML = data.result;
+        });
+    }
+
+    function subtractFunction() {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+
+        fetch(`/calculator/subtract?num1=${num1}&num2=${num2}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById("result").innerHTML = data.result;
+        });
+    }
+
+    function multiplyFunction() {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+
+        fetch(`/calculator/multiply?num1=${num1}&num2=${num2}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById("result").innerHTML = data.result;
+        });
+    }
+
+    function divideFunction() {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+
+        fetch(`/calculator/divide?num1=${num1}&num2=${num2}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById("result").innerHTML = data.result;
+        });
+    }
 </script>
 
 </html>
