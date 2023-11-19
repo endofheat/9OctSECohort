@@ -13,6 +13,7 @@ import FancyBox from "./components/FancyBox";
 import MoviesList from "./components/MovieList";
 import MoodChanger from "./components/MoodChanger";
 import Greeting from "./components/Greeting";
+import BigCats from "./components/BigCats";
 
 function ExampleComponent() {
   return (
@@ -152,7 +153,9 @@ function App() {
       <Greeting name="Akira">
         <div>Have a nice day. </div>
       </Greeting>
-
+      <div className="BigCats componentBox">
+        <BigCats></BigCats>
+      </div>
     </>
   );
 }
