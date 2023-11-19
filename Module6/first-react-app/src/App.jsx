@@ -146,6 +146,13 @@ function App() {
         <MoviesList></MoviesList>
       </div>
       <MoodChanger></MoodChanger>
+      <Greeting>
+        <div>Bye, world.  </div>
+      </Greeting>
+      <Greeting name="Akira">
+        <div>Have a nice day. </div>
+      </Greeting>
+
     </>
   );
 }
