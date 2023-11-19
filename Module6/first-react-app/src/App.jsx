@@ -14,6 +14,8 @@ import MoviesList from "./components/MovieList";
 import MoodChanger from "./components/MoodChanger";
 import Greeting from "./components/Greeting";
 import BigCats from "./components/BigCats";
+import EmojiChanger from "./components/Emoji";
+import BirthdayTranslator from "./components/BirthdayTranslator";
 
 function ExampleComponent() {
   return (
@@ -156,6 +158,8 @@ function App() {
       <div className="BigCats componentBox">
         <BigCats></BigCats>
       </div>
+      <EmojiChanger></EmojiChanger>
+      <BirthdayTranslator></BirthdayTranslator>
     </>
   );
 }
