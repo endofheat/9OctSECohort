@@ -38,4 +38,4 @@ function Comment(props) {
   );
 }
 
-export default Comment
+export default Comment;

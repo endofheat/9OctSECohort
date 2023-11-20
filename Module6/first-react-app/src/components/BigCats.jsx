@@ -1,8 +1,8 @@
 function BigCat({name, latinName}){
     return (
         <li>
-            <h2>Name: {name}</h2>
-            <h2>Latin Name: {latinName}</h2>
+            <h4>Name: {name}</h4>
+            <h4>Latin Name: {latinName}</h4>
         </li>
     )
 
