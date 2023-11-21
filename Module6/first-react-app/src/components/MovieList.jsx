@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from "react"
+import AddMovieForm from "./AddMovieForm"
 
 function Movie({title, year, synopsis}){
     return (
@@ -35,13 +36,15 @@ function MoviesList() {
     const [currentMovies, setCurrentMovies] = useState(movies);
 
 
-  const movieItems = currentMovies.map((movie) => (
+    const movieItems = currentMovies.map((movie) => (
     <Movie  key={movie.id} 
             title={movie.title}
             year={movie.year}
             synopsis={movie.synopsis}/>
     
-  ))
+  ));
+
+
 
   const handleReverseMovies = () => {
     // first clone the original, so we don’t mutate it
@@ -50,14 +53,45 @@ function MoviesList() {
     setCurrentMovies(newMovies); // 3. set updated clone in state
     }
 
+    const handleSortByYear = function() {
+      let newMovies = [...currentMovies];
+      newMovies.sort((movieA, movieB) => movieA.year - movieB.year);
+      setCurrentMovies(newMovies);
+    }
+  
+    const handleSortByTitle = function() {
+      let newMovies = [...currentMovies];
+      newMovies.sort((movieA, movieB) => movieA.title > movieB.title ? 1 : -1);
+      setCurrentMovies(newMovies);
+    }
+
+      // add this in MoviesList component
+    const handleAddMovie = (newMovie) => {
+      newMovie.id = currentMovies.length + 1; // unreliable but succinct
+      setCurrentMovies([...currentMovies, newMovie]);
+    };
+
+
  return (
-  <div className="MoviesList">
+  <div className="MoviesList componentBox">
     <ul>
         {movieItems}
     </ul>
     <button onClick={handleReverseMovies}>Reverse List</button>
+    <SortButton sortField="Year" onSort={handleSortByYear} />
+    <SortButton sortField="Title" onSort={handleSortByTitle} />
+    <AddMovieForm onAddMovie={handleAddMovie} />
 </div>
-)
+);
 
 }
+
+// new component to render any kind of sorting button
+function SortButton({sortField, onSort}) {
+  return (
+    <button onClick={onSort}>Sort By {sortField}</button>
+  )
+}
+
+
 export default MoviesList;
