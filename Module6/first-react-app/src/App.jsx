@@ -18,6 +18,7 @@ import SingleCat from "./components/SingleCat";
 import EmojiChanger from "./components/Emoji";
 import BirthdayTranslator from "./components/BirthdayTranslator";
 import Weather from "./components/Weather";
+import LoginForm from "./components/LoginForm";
 
 
 function ExampleComponent() {
@@ -68,7 +69,7 @@ function App() {
     },
   };
 
-  const SingleCat = 
+  /* const SingleCat = [
         {CatImgUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Cheetah_portrait_Whipsnade_Zoo.jpg', name: 'Cheetah', latinName: 'Acinonyx jubatus' },
         {CatImgUrl: 'https://daily.jstor.org/wp-content/uploads/2016/08/cougar_closeup_1050x700.jpg', name: 'Cougar', latinName: 'Puma concolor' },
         {CatImgUrl: 'https://www.zurich.com/-/media/project/zurich/dotcom/media/magazine/2021/images/teaser-social-how-endangered-jaguars-returned-to-brazils-ghost-forest.jpg?rev=ed634138b7d944b8a760d8e977d29a23', name: 'Jaguar', latinName: 'Panthera onca' },
@@ -77,7 +78,7 @@ function App() {
         {CatImgUrl: 'https://thebigcatsanctuary.org/wp-content/uploads/2021/10/Screenshot-2021-10-29-at-11.03.38-1024x747.png', name: 'Snow leopard', latinName: 'Panthera uncia' },
         {CatImgUrl: 'https://www.wildlifeexplained.com/wp-content/uploads/2022/01/tiger-panthera-tigris-closeup.jpg', name: 'Tiger', latinName: 'Panthera tigris' },
 
-  ;
+  ]; */
 
   return (
     <>
@@ -183,6 +184,8 @@ function App() {
       <EmojiChanger></EmojiChanger>
       <BirthdayTranslator></BirthdayTranslator>
       <Weather></Weather>
+
+      <LoginForm></LoginForm>
     </>
   );
 }
