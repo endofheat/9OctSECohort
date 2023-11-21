@@ -1,4 +1,5 @@
 import { useState } from "react"
+import AddCatForm from "./AddCatForm"
 
 const cats = [
         { id: 1, name: 'Cheetah', latinName: 'Acinonyx jubatus', imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Cheetah_portrait_Whipsnade_Zoo.jpg' },
@@ -28,13 +29,38 @@ function BigCats(){
             latinName={cat.latinName}
             img={cat.imgUrl}/>
 ))
+
+    const handleSortByName = function() {
+        let newList = [...catsList];
+        newList.sort((catA, catB) => catA.name > catB.name ? 1 : -1);
+        setCatsList(newList);
+    }
+
+    const handleReverseList = () => {
+        let newList = [...catsList];
+        newList.reverse();
+        setCatsList(newList);
+    }
+
+    const handleAddCat = (newCat) => {
+        newCat.id = catsList.length + 1;
+        setCatsList([...catsList, newCat]);
+    }
+
     return (
         <div className="BigCats componentBox">
         <ul>{catItems}</ul>
-        
+        <SortButton sortField="Name" onSort={handleSortByName}></SortButton>
+        <button onClick={handleReverseList}>Reverse List</button>
+        <AddCatForm onAddCat={handleAddCat} />
         </div>
 )
 }
 
+function SortButton({sortField, onSort}) {
+    return (
+        <button onClick={onSort}>Sort By {sortField}</button>
+    )
+}
 
 export default BigCats;
