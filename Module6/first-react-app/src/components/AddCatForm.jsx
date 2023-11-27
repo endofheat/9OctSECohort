@@ -26,7 +26,7 @@ function AddCatForm({ onAddCat }) {
           latinName Released:
           <input
             name="latinName"
-            type="number"
+            type="text"
             value={latinName}
             onChange={(e) => setLatinName(e.target.value)}
           />
