@@ -1,9 +1,11 @@
 import { useData } from "../hooks/useData";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export function PostList() {
-  const postsData = useData("https://jsonplaceholder.typicode.com/posts"+id);
+
+  const postsData = useData("https://jsonplaceholder.typicode.com/postsposts?_limit=5"+[]);
+  console.log(postsData);
 
   // the ? means only call map if postsData is not null
   const postList = postsData?.map((post) => (
@@ -20,7 +22,16 @@ export function Post() {
     const allParams = useParams();
     console.log(allParams);
     const { id } = useParams(); // custom hook to access dynamic params
+    const navigate = useNavigate();
     const post = useData('https://jsonplaceholder.typicode.com/posts/'+id);
+    
+    const handleNextPost = () => {
+      navigate("/posts/" + (parseInt(id)+1))
+    }
+
+    const handlePreviousPost = () => {
+      navigate("/posts" + (parseInt(id)-1))
+    }
 
     return (
     <div className="Post">
@@ -34,6 +45,9 @@ export function Post() {
     ) : ( 
         "Loading ..." 
         )}
+        <button onClick={handlePreviousPost}>Previous Post</button>
+        <button onClick={handleNextPost}>Next Post</button>
     </div>
+    
     )
     }

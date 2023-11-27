@@ -5,8 +5,7 @@ import PageNotFound from "../pages/PageNotFound";
 import Homepage from "../pages/Homepage";
 import SignUpPage from "../pages/SignUpPage";
 import PostsPage from "../pages/PostsPage";
-import { PostList } from "../components/PostsList";
-import { Post } from "../components/PostsList";
+import { PostList, Post } from "../components/PostsList";
 
 function AppRoutes(props) {
   return (

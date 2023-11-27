@@ -24,11 +24,11 @@ function App () {
         <EmojiProvider>
           {/* provider component is at top level */}
           {/* <ClockDisplay /> so all children can use context data */}
-          {/* <MoviesList /> even if they have children of their own */}
+          {/* <MoviesList /> even if they have children of their own 
         <EmojiChanger />
         <BitcoinRates />
         <SubscribeForm />
-        <ActivityFinder />
+        <ActivityFinder />*/}
         <PostListReducer /> 
         <LoginForm />
           <NavBar />
