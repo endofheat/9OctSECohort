@@ -14,6 +14,7 @@ export function useData(url, defaultValue = {}) {
         .then((json) => {
           if (!ignore) {
             setData(json);
+            console.log(json.bitcoin);
           }
         })
         .catch((error) => {
@@ -29,7 +30,7 @@ export function useData(url, defaultValue = {}) {
   }, [url]); // re-run effect if url changes
 
   // return the data fetched from the given url
-  return [data, errorMsg];
+  return data;
 }
 
 // save as useData.jsx in the 'hooks' folder
