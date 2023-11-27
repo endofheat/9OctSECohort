@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { MyThemeContext } from "../context/MyThemeContext";
-import ThemeSwitcher from "./ThemeSwitcher";
+//import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function NavBar() {
   const { theme } = useContext(MyThemeContext);
