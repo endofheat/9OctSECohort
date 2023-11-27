@@ -23,9 +23,10 @@ function AppRoutes(props) {
 
       <Route path="/signup" element={<SignUpPage {...props} />} />
 
-      <Route path="/posts" element={<PostsPage {...props} />}/>
+      <Route path="/posts" element={<PostsPage {...props} />}>
         <Route index element={<PostList/>} />
         <Route path=":id" element={<Post />} />
+          </Route>
       {/* special route to handle if none of the above match */}
       <Route path="*" element={<PageNotFound />} />
     </Routes>

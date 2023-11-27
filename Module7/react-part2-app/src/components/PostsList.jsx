@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export function PostList() {
 
-  const postsData = useData("https://jsonplaceholder.typicode.com/postsposts?_limit=5"+[]);
+  const postsData = useData("https://jsonplaceholder.typicode.com/posts?_limit=5",[]);
   console.log(postsData);
 
   // the ? means only call map if postsData is not null
@@ -30,7 +30,7 @@ export function Post() {
     }
 
     const handlePreviousPost = () => {
-      navigate("/posts" + (parseInt(id)-1))
+      navigate("/posts/" + (parseInt(id)-1))
     }
 
     return (
@@ -45,7 +45,7 @@ export function Post() {
     ) : ( 
         "Loading ..." 
         )}
-        <button onClick={handlePreviousPost}>Previous Post</button>
+        {parseInt(id) > 1 &&<button onClick={handlePreviousPost}>Previous Post</button>}
         <button onClick={handleNextPost}>Next Post</button>
     </div>
     

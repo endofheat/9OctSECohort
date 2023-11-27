@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // hooks are usually named exports rather than default
-export function useData(url, defaultValue = {}) {
+export function useData(url, defaultValue = []) {
   // state variable for holding fetched json data
   const [data, setData] = useState(defaultValue); // need to set a default value for data before fetching it
   const [errorMsg, setErrorMsg] = useState("");

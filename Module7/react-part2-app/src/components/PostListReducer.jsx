@@ -2,40 +2,43 @@ import { useEffect, useReducer, useState } from 'react' // continued on next sli
 import axios from 'axios' // first do 'npm install axios' - alternative to fetch
 
 export default function PostListReducer () {
-  const [postsResult, dispatch] = useReducer(reducer, {
+  const [postResult, dispatch] = useReducer(reducer, {
     // initial state for postsResult state variable
     loading: true, // true when loading and no data in posts
     posts: [], // empty until data is fetched
-    error: '' // empty unless there was an error
+    error: '', // empty unless there was an error
   })
 
-  const [postsResultState, setPostsResultState] = useState({
+  const [postResultState, setPostResultState] = useState({
     loading: true,
     posts: [],
-    error: ''
+    error: '',
   })
 
-  console.log(postsResult)
+  console.log(postResult)
 
   useEffect(() => {
     axios
       .get('https://jsonplaceholder.typicode.com/posts?_limit=5') // modify this URL to test the error case
       .then((response) => {
         // object passed to dispatch holds all data needed for updating state: both type of update and associated data
-        dispatch({ type: 'FETCH_SUCCESS', payload: response.data }) // dispatch calls reducer function and triggers re-render
-      })
+        dispatch({ type: 'FETCH_SUCCESS', payload: response.data });
+        setPostResultState({ loading: false, posts: response.data, error: "" });
+      }) // dispatch calls reducer function and triggers re-render
+      
       .catch((error) => {
-        dispatch({ type: 'FETCH_ERROR', payload: error.message }) // lets us handle different types of state changes differently
-      })
-  }, [])
+        dispatch({ type: 'FETCH_ERROR', payload: error.message });
+        setPostResultState({ loading: false, posts: [], error: error.message }) // lets us handle different types of state changes differently
+      })} , [])
+ 
 
   // returned JSX uses the 3 things stored in postsResult state object to conditionally render data or an error message
   return (
     <div className='PostList componentBox'>
-      {postsResult.loading ? (
+      {postResult.loading ? (
         <div>Loading posts...</div>
       ) : (
-        postsResult.posts.map(
+        postResult.posts.map(
           (
             post // list of posts is just one of the things stored in the postsResult state object
           ) => (
@@ -48,10 +51,10 @@ export default function PostListReducer () {
           )
         )
       )}
-      <div className='error'>{postsResult.error}</div>
+      <div className='error'>{postResult.error}</div>
     </div>
   )
-}
+};
 // reducer function for axios fetch response
 // called from dispatch when state is updated, lets us handle different actions
 // return object should match same structure as initial state passed to useReducer
