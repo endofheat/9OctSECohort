@@ -1,37 +1,47 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
 
 // Renders a digital time that updates every second
-function Clock() {
-  const [date, setDate] = useState(new Date());
+function Clock () {
+  const [date, setDate] = useState(new Date())
+  const [tickCount, setTickCount] = useState(0)
+
   useEffect(() => {
-    // first arg is usually an arrow function
-    setInterval(() => tick(), 1000);
-    console.log("Clock component mounted");
-  }, []); // second arg is an array of dependencies
+    const clockInterval = setInterval(() => tick(), 1000)
+    console.log('Clock component mounted')
+
+    return () => {
+      clearInterval(clockInterval)
+      setTickCount(0)
+      console.log('Clock component unmounted')
+    }
+  }, []) // second arg is an array of dependencies
+
   const tick = () => {
-    setDate(new Date());
-    console.log("tick"); // track the effect frequency
-  };
+    setDate(new Date())
+    setTickCount(pendingTickCount => pendingTickCount + 1)
+    console.log('tick') // track the effect frequency
+  }
+
   return (
-    <div className="Clock">
+    <div className='Clock'>
       <h3>Digital Clock</h3>
-      {date.toLocaleTimeString()}
+      {date.toLocaleTimeString()}({tickCount} ticks)
     </div>
-  );
+  )
 }
 
-function ClockDisplay() {
-  const [showClock, setShowClock] = useState(false);
+function ClockDisplay () {
+  const [showClock, setShowClock] = useState(false)
 
   const toggleClock = () => {
-    setShowClock(!showClock);
-  };
+    setShowClock(!showClock)
+  }
 
   return (
-    <div className="ClockDisplay componentBox">
+    <div className='ClockDisplay componentBox'>
       {showClock && <Clock />}
       <button onClick={toggleClock}>Toggle Clock</button>
     </div>
-  );
+  )
 }
-export default ClockDisplay;
+export default ClockDisplay
