@@ -14,7 +14,8 @@ import Footer from './components/footer'
 import MyThemeProvider from './context/MyThemeContext'
 import EmojiChanger from './components/Emoji'
 import { EmojiProvider } from './context/EmojiContext'
-
+import ProtectedRoute from './routes/ProtectedRoute'
+import AboutPage from './pages/AboutPage'
 
 function App () {
   return (
@@ -22,14 +23,20 @@ function App () {
       <UserProvider>
         <MyThemeProvider>
         <EmojiProvider>
+          
+          <AboutPage />
           {/* provider component is at top level */}
-          {/* <ClockDisplay /> so all children can use context data */}
-          {/* <MoviesList /> even if they have children of their own 
-        <EmojiChanger />
-        <BitcoinRates />
-        <SubscribeForm />
+          {/* <ClockDisplay /> so all children can use context data 
+          <MoviesList /> even if they have children of their own */}
+        <div className='BitcoinRates componentBox'>
+          <BitcoinRates />
+          <EmojiChanger />
+        </div>
+        
+        {/* <SubscribeForm />
         <ActivityFinder />*/}
         <PostListReducer /> 
+        <ProtectedRoute />
         <LoginForm />
           <NavBar />
           <AppRoutes />
