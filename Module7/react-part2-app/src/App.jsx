@@ -28,10 +28,7 @@ function App () {
           {/* provider component is at top level */}
           {/* <ClockDisplay /> so all children can use context data 
           <MoviesList /> even if they have children of their own */}
-        <div className='BitcoinRates componentBox'>
           <BitcoinRates />
-          <EmojiChanger />
-        </div>
         
         {/* <SubscribeForm />
         <ActivityFinder />*/}

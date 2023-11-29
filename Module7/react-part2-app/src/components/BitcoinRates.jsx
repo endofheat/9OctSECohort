@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useData } from '../hooks/useData'
+import EmojiChanger from './Emoji'
 
 const currencies = ['USD', 'AUD', 'NZD', 'GBP', 'EUR', 'SGD']
 
@@ -43,6 +44,7 @@ function BitcoinRates () {
           {options}
         </select>
       </label>
+      <EmojiChanger />
     </div>
   )
 }
