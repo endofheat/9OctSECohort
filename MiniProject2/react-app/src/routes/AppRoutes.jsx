@@ -32,6 +32,7 @@ function AppRoutes(props) {
         <Route path="/profile" element={<Profile />} />
   
         <Route path="/about" element={<AboutPage {...props} />} />
+        
 
   
         <Route path="/signup" element={<SignupPage {...props} />} />

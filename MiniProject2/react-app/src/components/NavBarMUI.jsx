@@ -18,6 +18,28 @@ import ThemeSwitcher from './ThemeSwitch';
 import { NavLink } from 'react-router-dom';
 
 //const pages = ['Home', 'About', 'Movie', 'Log in', 'Sign up'];
+const pages = [
+  {
+    to: "/",
+    name: "Home",
+  },
+  {
+    to: "/about",
+    name: "About",
+  },
+  {
+    to: "/movie",
+    name: "Movie",
+  },
+  {
+    to: "/login",
+    name: "Login",
+  },
+  {
+    to: "/signup",
+    name: "Sign Up",
+  }
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Search = styled('div')(({ theme }) => ({
@@ -79,6 +101,11 @@ export default function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const handleNavLink = () => {
+    <NavLink to={pages.to}></NavLink>
+
+  }
+
 
   return (
     <AppBar position="static">
@@ -113,15 +140,15 @@ export default function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page) => (
+                <MenuItem key={page.name} onClick={handleNavLink}>
                   <Typography textAlign="center">{page}
                   </Typography>
                 </MenuItem>
-                ))} */}
-                <MenuItem ><NavLink to="/profile">Profile</NavLink></MenuItem>
+                ))}
+{/*                 <MenuItem ><NavLink to="/profile">Profile</NavLink></MenuItem>
                 <MenuItem ><NavLink to="/login">Log In</NavLink></MenuItem>
-                <MenuItem ><NavLink to="/signup">Sign Up</NavLink></MenuItem>
+                <MenuItem ><NavLink to="/signup">Sign Up</NavLink></MenuItem> */}
                 
 
               

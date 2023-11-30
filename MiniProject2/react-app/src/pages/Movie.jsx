@@ -10,12 +10,12 @@ const options = {
 
 
 export default function Movie() {
-    /* const movieData = useData('https://api.themohttps://api.themoviedb.org/3/account/20773157/favorite/moviesviedb.org/3/authentication', options,)
-    console.log(movieData) */
+    const movieData = useData('https://api.themoviedb.org/3/account/20773157/favorite/moviesviedb.org/3/authentication', options,)
+    console.log(movieData)
 
     return (
       <div className="Movie">
-        <h1>Home</h1>
+        <h1>Movie</h1>
       </div>
     );
   }
