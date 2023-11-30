@@ -5,6 +5,7 @@ function ThemeSwitcher() {
 
     const handleThemeChange = (e) => {
         (darkMode) ? setTheme(themes.light) : setTheme(themes.dark)
+        //setTheme((darkMode) === themes.light ? themes.dark : themes.light);
     }
 
     return (

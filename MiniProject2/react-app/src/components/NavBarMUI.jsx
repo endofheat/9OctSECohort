@@ -17,8 +17,8 @@ import Tooltip from '@mui/material/Tooltip';
 import ThemeSwitcher from './ThemeSwitch';
 import { NavLink } from 'react-router-dom';
 
-//const pages = ['Home', 'About', 'Movie', 'Log in', 'Sign up'];
-const pages = [
+const pages = ['Home', 'About', 'Movie', 'Log in', 'Sign up'];
+/* const pages = [
   {
     to: "/",
     name: "Home",
@@ -39,7 +39,7 @@ const pages = [
     to: "/signup",
     name: "Sign Up",
   }
-];
+]; */
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Search = styled('div')(({ theme }) => ({
@@ -141,7 +141,7 @@ export default function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={handleNavLink}>
+                <MenuItem key={page/* .name */} onClick={handleNavLink}>
                   <Typography textAlign="center">{page}
                   </Typography>
                 </MenuItem>
