@@ -16,30 +16,32 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import ThemeSwitcher from './ThemeSwitch';
 import { NavLink } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-const pages = ['Home', 'About', 'Movie', 'Log in', 'Sign up'];
-/* const pages = [
-  {
-    to: "/",
-    name: "Home",
-  },
-  {
-    to: "/about",
-    name: "About",
-  },
-  {
-    to: "/movie",
-    name: "Movie",
-  },
-  {
-    to: "/login",
-    name: "Login",
-  },
-  {
-    to: "/signup",
-    name: "Sign Up",
-  }
-]; */
+//const pages = ['Home', 'About', 'Movie', 'Log in', 'Sign up'];
+
+  const pages = [
+    {
+      path: "/",
+      name: "Home2",
+    },
+    {
+      path: "/about",
+      name: "About",
+    },
+    {
+      path: "/movie",
+      name: "Movie",
+    },
+    {
+      path: "/login",
+      name: "Login",
+    },
+    {
+      path: "/signup",
+      name: "Sign Up",
+    },
+  ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Search = styled('div')(({ theme }) => ({
@@ -101,14 +103,14 @@ export default function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const handleNavLink = () => {
+/*   const handleNavLink = () => {
     <NavLink to={pages.to}></NavLink>
 
-  }
+  } */
 
 
   return (
-    <AppBar position="flex">
+    <AppBar position="static">
       <Container maxWidth="100%">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -139,31 +141,38 @@ export default function ResponsiveAppBar() {
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page/* .name */} onClick={handleNavLink}>
-                  <Typography textAlign="center">{page}
-                  </Typography>
+            >{console.log(pages)}
+              {pages.map((page, index) => (
+                <MenuItem key={index}>
+                  <NavLink to={page.path}>
+                   {page.name}
+                  </NavLink>
                 </MenuItem>
                 ))}
-{/*                 <MenuItem ><NavLink to="/profile">Profile</NavLink></MenuItem>
-                <MenuItem ><NavLink to="/login">Log In</NavLink></MenuItem>
-                <MenuItem ><NavLink to="/signup">Sign Up</NavLink></MenuItem> */}
                 
 
               
             </Menu>
           </Box>
                 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+{/*           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page, index) => (
               <Button
-                key={page}
+                key={index}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.name}
               </Button>
+            ))}
+          </Box> */}
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          {pages.map((page, index) => (
+                  <NavLink id='Link' key={index} to={page.path} sx={{ my: 2, color: 'white', display: 'block' }}>
+                  {page.name}
+                  </NavLink>
+              
             ))}
           </Box>
 

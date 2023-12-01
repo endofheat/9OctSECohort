@@ -30,8 +30,8 @@ function LoginForm() {
     if (userPassword.length < 5) {
       setSubmitResult("Password must be at least 5 characters long");
       setLoginAttempts(loginAttempts + 1)
-    } else if (userEmail.length < 8) {
-        setSubmitResult("Email address must be at least 8 characters long");      
+    } else if (!userEmail.includes("@")) {
+        setSubmitResult("Invalid email address");      
         setLoginAttempts(loginAttempts + 1)
     } else if (userPassword === userEmail) {
       setSubmitResult("Password must not match email address");
