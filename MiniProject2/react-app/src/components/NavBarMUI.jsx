@@ -108,7 +108,7 @@ export default function ResponsiveAppBar() {
 
 
   return (
-    <AppBar position="static">
+    <AppBar position="flex">
       <Container maxWidth="100%">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
