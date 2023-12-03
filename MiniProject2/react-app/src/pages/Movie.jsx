@@ -10,7 +10,7 @@ const options = {
 
 
 export default function Movie() {
-    const movieData = useData('https://api.themoviedb.org/3/account/20773157/favorite/moviesviedb.org/3/authentication', options,)
+    const movieData = useData('https://api.themoviedb.org/3/account/20773157/favorite/movies', options,)
     console.log(movieData)
 
     return (

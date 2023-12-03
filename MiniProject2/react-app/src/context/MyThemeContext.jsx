@@ -19,7 +19,7 @@ export default function MyThemeProvider(props) {
 
     const toggleTheme = () => {
       console.log('Toggle Theme');
-      setTheme((prevTheme) => (prevTheme === themes.light ? themes.dark : themes.light));
+      setTheme(theme === themes.light ? themes.dark : themes.light);
     }
 
   return (
