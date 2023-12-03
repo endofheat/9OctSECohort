@@ -3,6 +3,7 @@ export default function AboutPage() {
   return (
     <div className="About">
       <h1>About</h1>
+      <p>It's a movie list website, you can check the information of latest 20 movies that are showing</p>
     </div>
   );
 }
