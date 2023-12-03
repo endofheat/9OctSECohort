@@ -1,49 +1,49 @@
 import { createTheme } from "@mui/material/styles";
 
 export const darkThemeSettings = {
-    palette: {
-        primary: {
-            main: '#3C1361',
-            contrastText: '#efefef'
-        },
-        secondary: {
-            main: '#A663FF',
-            contrastText: '#ffffff'
-        },
-        mode: 'light'
+  palette: {
+    primary: {
+      main: "#063970",
+      contrastText: "#efefef",
     },
-    typography: {
-        // see https://blog.logrocket.com/add-custom-fonts-mui/#google-fonts-cdn for custom fonts
-        // need to add <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"> to index.html
-        fontFamily: 'Ubuntu',
-        fontSize: 16,
-        h1: {
-            fontSize: 32
-        }
+    secondary: {
+      main: "#0b64c5",
+      contrastText: "#ffffff",
     },
-    shape: {
-        borderRadius: 10
+    mode: "dark",
+  },
+  typography: {
+    // see https://blog.logrocket.com/add-custom-fonts-mui/#google-fonts-cdn for custom fonts
+    // need to add <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"> to index.html
+    fontFamily: "monospace",
+    fontSize: 16,
+    h1: {
+      fontSize: 30,
     },
-    components: {
-        MuiCssBaseline: {
-            styleOverrides: `
+  },
+  shape: {
+    borderRadius: 0,
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
             a {
-                color: #A663FF;
+                color: #0b64c5;
             }
             `,
-        },        
-        MuiButton: {
-            defaultProps: {
-                variant: 'contained'
-            },
-        },
-        MuiTextField: {
-            defaultProps: {
-                variant: 'filled'
-            }
-        }
-    }    
-}
+    },
+    MuiButton: {
+      defaultProps: {
+        variant: "contained",
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: "filled",
+      },
+    },
+  },
+};
 
 // creates a new theme containing overrides for any defaults
 // see https://mui.com/material-ui/customization/theming/#theme-configuration-variables for more
