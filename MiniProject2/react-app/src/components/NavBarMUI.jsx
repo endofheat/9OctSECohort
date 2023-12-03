@@ -14,9 +14,9 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import { useMyThemeContext, themes } from '../context/MyThemeContext';
 import { NavLink } from 'react-router-dom';
 import { Route } from 'react-router-dom';
+
 
   const pages = [
     {
@@ -102,11 +102,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const { darkMode } = useMyThemeContext();
-  const NavBarStyles = {
-    backgroundColor: darkMode ? themes.dark : themes.light,
-    color: darkMode ? themes.dark : themes.light,
-  }
+ 
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -124,9 +120,10 @@ export default function ResponsiveAppBar() {
   };
 
   return (
+
     <AppBar position="static">
       <Container maxWidth="100%">
-        <Toolbar disableGutters style={NavBarStyles}>
+        <Toolbar disableGutters >
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -183,7 +180,7 @@ export default function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           {pages.map((page, index) => (
-                  <NavLink id='Link' key={index} to={page.path} sx={{ my: 2, color: 'white', display: 'block' }}>
+                  <NavLink id='Link' key={"page"+index} to={page.path} sx={{ my: 2, color: 'white', display: 'block' }}>
                   {page.name}
                   </NavLink>
               
@@ -203,7 +200,7 @@ export default function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
           {settings.map((setting, index) => (
                 <Typography textAlign="center">
-                  <NavLink id='Link' key={index} to={setting.path}>
+                  <NavLink id='Link' key={"setting"+index} to={setting.path}>
                   </NavLink>
                 </Typography>
                 ))}
@@ -232,7 +229,7 @@ export default function ResponsiveAppBar() {
             </Menu>
             {settings.map((setting, index) => (
                 <Typography textAlign="center">
-                  <NavLink id='Link' key={index} to={setting.path}>
+                  <NavLink id='Link' key={"setting2"+index} to={setting.path}>
                   </NavLink>
                 </Typography>
                 ))}
@@ -240,5 +237,6 @@ export default function ResponsiveAppBar() {
         </Toolbar>
       </Container>
     </AppBar>
+    
   );
 }

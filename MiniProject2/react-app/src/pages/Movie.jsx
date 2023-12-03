@@ -11,7 +11,7 @@ const options = {
 
 export default function Movie() {
     const movieData = useData('https://api.themoviedb.org/3/account/20773157/favorite/movies', options,)
-    console.log(movieData)
+    console.log("I am here")
 
     return (
       <div className="Movie">
