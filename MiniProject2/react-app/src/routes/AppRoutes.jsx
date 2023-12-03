@@ -8,6 +8,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import LoginForm from "../components/LoginForm.jsx";
 import Movie from "../pages/Movie.jsx";
 import Profile from "../pages/Profile.jsx";
+import AccountPage from "../pages/AccountPage.jsx";
+import LogoutPage from "../pages/LogoutPage.jsx";
 
 // child components using {...props}
 function AppRoutes(props) {
@@ -18,7 +20,7 @@ function AppRoutes(props) {
         <Route path="movie" element={<Movie/>}/>
   
         {/* nested routes, matches on /dash/tasks etc */}
-        <Route path="dash" element={
+        <Route path="dashboard" element={
             <ProtectedRoute>
               <DashboardPage {...props} />
             </ProtectedRoute>
@@ -30,13 +32,10 @@ function AppRoutes(props) {
   
         <Route path="/login" element={<LoginForm />} />
         <Route path="/profile" element={<Profile />} />
-  
         <Route path="/about" element={<AboutPage {...props} />} />
-        
-
-  
         <Route path="/signup" element={<SignupPage {...props} />} />
-  
+        <Route path="/account" element={<AccountPage />}/>
+        <Route path="/logout" element={<LogoutPage />}/>
         {/* special route to handle if none of the above match */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>

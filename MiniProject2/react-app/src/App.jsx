@@ -10,13 +10,15 @@ function App() {
 
   return (
     <>
+    <MyThemeProvider>
       <UserProvider>
-        <MyThemeProvider>
+        
           <ResponsiveAppBar />
           <AppRoutes />
           <Footer />
-        </MyThemeProvider>
+        
       </UserProvider>
+      </MyThemeProvider>
     </>
   );
 }

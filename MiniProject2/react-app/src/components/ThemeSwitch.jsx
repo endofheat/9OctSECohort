@@ -1,12 +1,13 @@
 import React from "react";
-import { useMyThemeContext, themes } from "../context/MyThemeContext"
+import { useMyThemeContext } from "../context/MyThemeContext"
 
 function ThemeSwitcher() {
     const { setTheme, darkMode } = useMyThemeContext();
 
     const handleThemeChange = () => {
+        
         //(darkMode) ? setTheme(themes.light) : setTheme(themes.dark)
-        setTheme((darkMode) => (darkMode === themes.light ? themes.dark : themes.light));
+        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
     }
 
     return (
