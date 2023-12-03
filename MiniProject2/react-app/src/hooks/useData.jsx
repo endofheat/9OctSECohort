@@ -57,7 +57,7 @@ export function UseData() {
                         >
                           Rating: {value.vote_average}
                         </Typography>
-                         — {value.overview}
+                        — {value.overview}
                       </React.Fragment>
                     }
                   />
