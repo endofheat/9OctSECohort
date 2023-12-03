@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useUserContext } from "../context/UserContext";
-import { useMyThemeContext } from "../context/MyThemeContext";
 import { TextField, Button } from "@mui/material";
-
-//import { themes, useMyThemeContext } from "../context/MyThemeContext";
+import { darkTheme } from "../themes/darkTheme";
 
 function LoginForm() {
   // TextField state values always need to be strings - empty initially
@@ -17,9 +15,6 @@ function LoginForm() {
   // tracks number of login attempts and boolean if login successful
   const [loginAttempts, setLoginAttempts] = useState(0);
   const { currentUser, handleUpdateUser } = useUserContext();
-  const { theme } = useMyThemeContext();
-
- // const {themes} = useMyThemeContext();
 
   const loginOK = currentUser.email; // if there is an email associated with the current user, we know the login worked
 
@@ -49,7 +44,7 @@ function LoginForm() {
   );
 
   return (
-    <div className="LoginForm componentBox" style={{background: theme.background, color: theme.foreground}}>
+    <div className="LoginForm componentBox"  style={{background:darkTheme.Background, color:darkTheme.Background}}>
       <form onSubmit={handleSubmit}>
       <br />
       <div className="formRow">

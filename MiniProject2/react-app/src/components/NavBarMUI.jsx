@@ -14,8 +14,8 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import { useMyThemeContext, themes } from "../context/MyThemeContext";
 import { NavLink } from "react-router-dom";
+import ThemeSwitcher from "./ThemeSwitch";
 import { Route } from "react-router-dom";
 
 const pages = [
@@ -224,6 +224,7 @@ export default function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
+          <ThemeSwitcher />
         </Toolbar>
       </Container>
     </AppBar>

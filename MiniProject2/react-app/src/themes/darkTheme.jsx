@@ -10,7 +10,12 @@ export const darkThemeSettings = {
       main: "#0b64c5",
       contrastText: "#ffffff",
     },
+    
     mode: "dark",
+    backgroud: {
+      default: "#010101",
+      paper: "#000000",
+    },
   },
   typography: {
     // see https://blog.logrocket.com/add-custom-fonts-mui/#google-fonts-cdn for custom fonts
@@ -47,4 +52,4 @@ export const darkThemeSettings = {
 
 // creates a new theme containing overrides for any defaults
 // see https://mui.com/material-ui/customization/theming/#theme-configuration-variables for more
-export const darkTheme = createTheme(darkThemeSettings);
+export const darkTheme = createTheme(darkThemeSettings) ;

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { lightTheme } from '../themes/lightTheme';
 import { darkTheme } from '../themes/darkTheme';
-import ThemeSwitcher from '../components/ThemeSwitch';
+import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 
 export const themes = {
@@ -23,9 +23,9 @@ export default function MyThemeProvider(props) {
   return (
       <MyThemeContext.Provider value={{ theme, setTheme }}>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
         {props.children}
         </ThemeProvider>
-        <ThemeSwitcher />
     
       </MyThemeContext.Provider>
   );
