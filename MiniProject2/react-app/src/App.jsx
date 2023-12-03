@@ -8,12 +8,14 @@ import Footer from './components/footer'
 
 function App() {
 
+
   return (
     <>
     <MyThemeProvider>
       <UserProvider>
         
           <ResponsiveAppBar />
+
           <AppRoutes />
           <Footer />
         
