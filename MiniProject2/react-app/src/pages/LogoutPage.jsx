@@ -1,6 +1,7 @@
 import React from 'react';
 import { useUserContext } from '../context/UserContext';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 function LogoutPage() {
   const { handleUpdateUser } = useUserContext();
@@ -16,7 +17,7 @@ function LogoutPage() {
     <div>
       <h1>Logout Page</h1>
       <p>Are you sure you want to log out?</p>
-      <button onClick={handleLogout}>Logout</button>
+      <Button onClick={handleLogout}>Logout</Button>
     </div>
   );
 }

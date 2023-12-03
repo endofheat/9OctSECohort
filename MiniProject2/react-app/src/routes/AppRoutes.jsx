@@ -31,7 +31,11 @@ function AppRoutes(props) {
         </Route>
   
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={
+                <ProtectedRoute>
+                  <Profile {...props} />
+                </ProtectedRoute>} />
+
         <Route path="/about" element={<AboutPage {...props} />} />
         <Route path="/signup" element={<SignupPage {...props} />} />
         <Route path="/logout" element={
