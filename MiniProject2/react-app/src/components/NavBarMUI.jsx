@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -65,6 +66,17 @@ const NavigationButton = ({ to, children, onClick, ...props }) => (
   </NavLink>
 );
 
+/*   const [searchTerm, setSearchTerm] = useState('');
+  const movieData = UseData();
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredMovies = movieData.results?.filter(
+    (movie) => movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  ); */
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -108,7 +120,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-/*   const { darkMode } = useMyThemeContext();
+  /*   const { darkMode } = useMyThemeContext();
   const NavBarStyles = {
     backgroundColor: darkMode ? themes.dark : themes.light,
     color: darkMode ? themes.dark : themes.light,
@@ -188,9 +200,21 @@ export default function ResponsiveAppBar() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              /* type="text"
+              value={searchTerm} 
+              onChange={handleSearch} */
               placeholder="Search movies..."
               inputProps={{ "aria-label": "search" }}
             />
+            {/*  {filteredMovies && filteredMovies.length > 0 ? (
+        <ul>
+          {filteredMovies.map((movie) => (
+            <li key={movie.id}>{movie.title}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No movies found.</p>
+      )} */}
           </Search>
 
           <Box sx={{ flexGrow: 0 }}>
