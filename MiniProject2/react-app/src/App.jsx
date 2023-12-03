@@ -5,6 +5,7 @@ import ResponsiveAppBar from './components/NavBarMUI'
 import MyThemeProvider from './context/MyThemeContext'
 import AppRoutes from './routes/AppRoutes'
 import Footer from './components/footer'
+import { CssBaseline } from '@mui/material'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
     <MyThemeProvider>
       <UserProvider>
           <ResponsiveAppBar />
-
+          <CssBaseline />
           <AppRoutes />
           <Footer />
       </UserProvider>

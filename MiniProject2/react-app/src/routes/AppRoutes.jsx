@@ -34,8 +34,11 @@ function AppRoutes(props) {
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<AboutPage {...props} />} />
         <Route path="/signup" element={<SignupPage {...props} />} />
-        <Route path="/account" element={<AccountPage />}/>
-        <Route path="/logout" element={<LogoutPage />}/>
+        <Route path="/logout" element={
+              <ProtectedRoute>
+                <LogoutPage {...props} />
+              </ProtectedRoute>}/>
+
         {/* special route to handle if none of the above match */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
