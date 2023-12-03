@@ -13,12 +13,10 @@ function App() {
     <>
     <MyThemeProvider>
       <UserProvider>
-        
           <ResponsiveAppBar />
 
           <AppRoutes />
           <Footer />
-        
       </UserProvider>
       </MyThemeProvider>
     </>

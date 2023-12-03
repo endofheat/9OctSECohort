@@ -3,7 +3,7 @@ export const pages = [
   { path: "/dashboard", name: "Dashboard" },
   { path: "/about", name: "About" },
   { path: "/login", name: "Login" },
-  { path: "/movie", name: "Movie" },
+  { path: "/cat", name: "Cat" },
   {
     path: "/signup",
     name: "Sign Up",

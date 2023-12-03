@@ -6,7 +6,7 @@ import PageNotFound from "../pages/PageNotFound";
 import SignupPage from "../pages/SignupPage";
 import ProtectedRoute from "./ProtectedRoute";
 import LoginForm from "../components/LoginForm.jsx";
-import Movie from "../pages/Movie.jsx";
+import { Movie } from "../pages/Movie.jsx";
 import Profile from "../pages/Profile.jsx";
 import AccountPage from "../pages/AccountPage.jsx";
 import LogoutPage from "../pages/LogoutPage.jsx";
@@ -17,10 +17,10 @@ function AppRoutes(props) {
       <Routes>
         {/* index matches on default/home URL: / */}
         <Route index element={<Homepage {...props} />} />
-        <Route path="movie" element={<Movie/>}/>
+        <Route path="/movie" element={<Movie/>}/>
   
         {/* nested routes, matches on /dash/tasks etc */}
-        <Route path="dashboard" element={
+        <Route path="/dashboard" element={
             <ProtectedRoute>
               <DashboardPage {...props} />
             </ProtectedRoute>
