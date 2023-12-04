@@ -1,22 +1,43 @@
-import { useData } from "../hooks/useData";
-
-const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer 4334c8997cd13292a39f91484f9e7753'
-    }
-  };
-
+import React, { useState, useContext } from "react";
+import { MovieContext, LoadingContext } from "../hooks/useData";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
 export default function Movie() {
-    const movieData = useData('https://api.themoviedb.org/3/account/20773157/favorite/movies', options,)
-    console.log("I am here")
-
-    return (
-      <div className="Movie">
-        <h1>Movie</h1>
-      </div>
-    );
-  }
-  
+  const movie = useContext(MovieContext);
+  const isLoading = useContext(LoadingContext);
+  return !isLoading ?(
+    <List sx={{ width: '100%', maxWidth: 1800, bgcolor: 'background.paper' }}>
+    {movie.map((value) => (
+    <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="Remy Sharp" src={"https://image.tmdb.org/t/p/w185"+ value.poster_path}/>
+          </ListItemAvatar>
+          <ListItemText
+            primary={value.title}
+            secondary={
+              <React.Fragment>
+                <Typography
+                  sx={{ display: 'inline' }}
+                  component="span"
+                  variant="body2"
+                  color="text.primary"
+                >
+                  Rating: {value.vote_average}
+                </Typography>
+                 — {value.overview}
+              </React.Fragment>
+            }
+          />
+      </ListItem>
+    ))}
+  </List>
+  ) : (
+    <h1> Loading!!!</h1>
+  )
+}

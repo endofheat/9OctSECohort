@@ -1,48 +1,33 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState, useContext, createContext } from "react";
+import axios from "axios";
 
-// hooks are usually named exports rather than default
-export function useData(url,defaultValue = []) {
-  // state variable for holding fetched json data
-  const [data, setData] = useState([defaultValue]); // need to set a default value for data before fetching it
-  const [errorMsg, setErrorMsg] = useState("");
+export const MovieContext = createContext({});
+export const LoadingContext = createContext(true);
 
-/*   const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MzM0Yzg5OTdjZDEzMjkyYTM5ZjkxNDg0ZjllNzc1MyIsInN1YiI6IjY1NjdlN2ZkZmI1Mjk5MDBjODgzNjc4ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._ipT7LYrli7VWptEwmObvNw5-JLkV_GBJ7k0Sw-Oujw'
-    }
-  };
-   */
+export default function UseData(props) {
+  const [movie, setMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    if (url) {
-      let ignore = false;
-      fetch(url, options)
-        .then((response) => response.json())
-        .then((json) => {
-          if (!ignore) {
-            setData(json);
-            console.log(json);
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-          setErrorMsg(error.message); 
-/*       fetch('https://api.themoviedb.org/3/account/20773157/favorite/tv?language=en-US&page=1&sort_by=created_at.asc', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));*/
-        }); // return an error message if there was a problem 
-
-      // cleanup function, in case url changes before complete
-      return () => {
-        ignore = true;
-      };
+    axios.get(
+     `https://api.themoviedb.org/3/discover/movie/?api_key=4334c8997cd13292a39f91484f9e7753`
+   ).then((data) => {
+     const temp = data?.data.results;
+     console.log(temp);
+     setMovie(temp);
+   }) 
+ }, []);
+  useEffect(() => {
+    if(movie!=null){
+      setIsLoading(false);
     }
-  }, [url]); // re-run effect if url changes
-
-  // return the data fetched from the given url
-  return [data, errorMsg];
+  }, [movie]);
+  return (
+    <LoadingContext.Provider value={isLoading}>
+      <MovieContext.Provider value={movie}>
+        {props.children}
+      </MovieContext.Provider>
+    </LoadingContext.Provider>     
+  );
+    
+  
 }
-
-// save as useData.jsx in the 'hooks' folder

@@ -5,6 +5,7 @@ import ResponsiveAppBar from './components/NavBarMUI'
 import MyThemeProvider from './context/MyThemeContext'
 import AppRoutes from './routes/AppRoutes'
 import Footer from './components/footer'
+import UseData from './hooks/useData'
 
 function App() {
 
@@ -12,11 +13,11 @@ function App() {
     <>
     <MyThemeProvider>
       <UserProvider>
-        
+        <UseData>
           <ResponsiveAppBar />
           <AppRoutes />
           <Footer />
-        
+        </UseData>
       </UserProvider>
       </MyThemeProvider>
     </>
