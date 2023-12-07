@@ -8,11 +8,11 @@ let dbConnect = require("./dbConnect");
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to my MongoDB application." });
+    res.json({ message: "Welcome to my MySQLDB application." });
 });
 
-let userRoutes = require('./routes/userRoutes')
-app.use('/api/users', userRoutes)
+/* let userRoutes = require('./routes/userRoutes')
+app.use('/api/users', userRoutes) */
 
 // set port, listen for requests
     const PORT = process.env.PORT || 8080;
