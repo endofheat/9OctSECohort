@@ -1,42 +1,23 @@
 const express = require("express");
+const calculatorController = require ('../controllers/calculatorController')
 const router = express.Router();
 
 // new route for adding two numbers
 router.get('/add', (req, res) => {
-    let firstNum = parseInt(req.query.num1);
-    let secondNum = parseInt(req.query.num2);
-    let addResult = firstNum + secondNum;
-    console.log(addResult);
-    res.status(200);
-    res.json({result: addResult});
+    calculatorController.add(req, res)
 
 });
 
 router.get('/subtract', (req, res) => {
-    let firstNum = parseInt(req.query.num1);
-    let secondNum = parseInt(req.query.num2);
-    let subResult = firstNum - secondNum;
-    console.log(subResult);
-    res.status(200);
-    res.json({result: subResult});
+    calculatorController.subtract(req, res)
 });
 
 router.get('/divide', (req, res) => {
-    let firstNum = parseInt(req.query.num1);
-    let secondNum = parseInt(req.query.num2);
-    let divResult = firstNum / secondNum;
-    console.log(divResult);
-    res.status(200);
-    res.json({result: divResult});
+    calculatorController.multiply(req, res)
 });
 
 router.get('/multiply', (req, res) => {
-    let firstNum = parseInt(req.query.num1);
-    let secondNum = parseInt(req.query.num2);
-    let mulResult = firstNum * secondNum;
-    console.log(mulResult);
-    res.status(200);
-    res.json({result: mulResult});
+    calculatorController.divide(req, res)
 });
 
 module.exports = router;

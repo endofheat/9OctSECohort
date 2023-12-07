@@ -62,9 +62,10 @@ router.get('/:id', (req, res) => {
 
     // Modify this function to find and return the friend matching the given ID, or a 404 if not found\
     let matchedFriend = friends.find(friend => friend.id == friendId)
-
+    matchedFriend ? res.status(200).json({result: `Friend ${fridenID}: `, data: matchedFriend})
     // Modify this response with the matched friend, or a 404 if not found
-    //res.json({result: 'Finding friend with ID ' + friendId})
+    : res.json({result: 'Finding friend with ID ' + friendId})
+
     if (matchedFriend) {
         // return valid data when the gender matches 
         res.status(200).json({result:"found.", data:matchedFriend})
