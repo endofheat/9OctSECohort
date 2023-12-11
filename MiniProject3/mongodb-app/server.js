@@ -3,15 +3,15 @@ const app = express();
 require("dotenv").config();
 // parse requests of content-type-application / json;
 
-let dbConnect = require ("./dbConnect");
+let dbConnect = require("./dbConnect");
 
 app.use(express.json());
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to my Mini Project 3" });
+  res.json({ message: "Welcome to my Mini Project 3" });
 });
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8181;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server is running on port ${PORT}.`);
 });
