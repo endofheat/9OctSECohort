@@ -2,15 +2,14 @@
 
 const Mongoose = require("mongoose");
 const uri = process.env.DB_URI || "mongodb://localhost/miniProject3Database";
-/* const mongooseOptions = {
+
+const mongooseOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}; */
-/* Mongoose.set('useNewUrlParser', true);
-Mongoose.set('useUnifiedTopology', true);
- */
+};
+
 //Connect to MongoDB
-Mongoose.connect(uri /* , mongooseOptions */)
+Mongoose.connect(uri, mongooseOptions)
   .then(() => console.log("MongoDB Connected"))
   .catch((error) => console.log("MongoDB Error: " + error.message));
 // Get the default connection

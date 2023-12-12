@@ -10,8 +10,14 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to my Mini Project 3" });
 });
 
-// set port, listen for requests
+let userRoutes = require("./routes/userRoutes");
+app.use("/api/user", userRoutes);
+
+let cardRoutes = require("./routes/cardRoutes");
+app.use("/api/card", cardRoutes);
+
 const PORT = process.env.PORT || 8181;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
