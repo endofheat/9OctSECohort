@@ -18,6 +18,15 @@ const getUsers = (/* req, */ res) => {
     });
 };
 
+const getUserById = (req, res) => {
+  Models.User.findById(req.params.id)
+  .then((data) => res.send({result: 200, data: data}))
+  .catch((err) => {
+    console.log(err)
+    res.send({result: 500, error: err.message})
+  })
+}
+
 const createUser = (data, res) => {
   console.log(data);
   new Models.User(data)
@@ -53,6 +62,7 @@ const deleteUser = (req, res) => {
 
 module.exports = {
   getUsers,
+  getUserById,
   createUser,
   updateUser,
   deleteUser
