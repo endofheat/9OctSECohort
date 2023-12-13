@@ -60,6 +60,15 @@ const updateCard = (req, res) => {
     });
 };
 
+const getCardById = (req, res) => {
+  Models.Card.findById(req.params.id)
+    .then((data) => res.send({result: 200, data: data}))
+    .catch((err) => {
+      console.log(err)
+      res.send({result: 500, error: err.message})
+    })
+};
+
 const deleteCard = (req, res) => {
   Models.Card.findByIdAndDelete(req.params.id)
     .then((data) => res.send({ result: 200, data: data }))
@@ -74,5 +83,6 @@ module.exports = {
   createCard,
   //getUserCards,
   updateCard,
+  getCardById,
   deleteCard
 };
