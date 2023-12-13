@@ -10,8 +10,20 @@ router.post("/create", (req, res) =>{
     Controllers.cardController.createCard(req.body, res);
 })
 
-router.get("/user/:uid", (req, res) => {
-    Controllers.cardController.getUserCards(req, res)
+/* router.get("/card/:uid", (req, res) => {
+    Controllers.cardController.getcardCards(req, res)
+}) */
+
+router.get("/:id", (req, res) => {
+    Controllers.cardController.getCards(req, res);
 })
+
+router.put("/:id", (req, res) => {
+    Controllers.cardController.updateCard(req, res);
+  });
+  
+  router.delete("/:id", (req, res) => {
+    Controllers.cardController.deleteCard(req, res);
+  });
 
 module.exports = router;
