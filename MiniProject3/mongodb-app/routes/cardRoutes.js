@@ -18,9 +18,9 @@ router.put("/:id", (req, res) => {
     Controllers.cardController.updateCard(req, res);
 });
 
-router.get("/:id", (req, res) => {
+/* router.get("/:id", (req, res) => {
     Controllers.cardController.getCardById(req, res);
-});
+}); */
 
 router.delete("/:id", (req, res) => {
     Controllers.cardController.deleteCard(req, res);

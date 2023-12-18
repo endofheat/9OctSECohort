@@ -11,17 +11,22 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
+    console.log('a user connected')
     io.emit("connection", "a user connected");//send event to all clients (sockets)
     socket.emit("welcome", "welcome new user");//send event to the client who sent event
     socket.broadcast.emit("new user", "a new client has connected to the server");//send event to all clients except the one who sent event
 
-    socket.on('chat message', (msg) => {
-        console.log('message: '+msg);
-        io.emit('chat message', msg);
+    socket.on('new user',(nickname) => { // need to add a form to ask user input their nickname
+        io.emit('new user', nickname + 'connected' );
+    })
+    socket.on('chat message', (nickname, msg) => {
+        console.log('message: '+ msg);
+        io.emit('chat message', nickname + ': ' + msg);
     })
 
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
+    socket.on('disconnect', (nickname) => {
+        console.log(nickname + 'disconnected');
+        socket.broadcast.emit('new user', nickname + 'left' );
     });
 });
 

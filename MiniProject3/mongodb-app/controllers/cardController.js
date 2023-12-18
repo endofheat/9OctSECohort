@@ -38,7 +38,7 @@ const createCard = (data, res) => {
     });
 };
 
-/* const getUserCards = (req, res) => {
+const getUserCards = (req, res) => {
   Models.Card.find({ user: req.params.uid })
     .populate({ path: "user" })
     .then((data) => res.send({ result: 200, data: data }))
@@ -46,7 +46,7 @@ const createCard = (data, res) => {
       console.log(err);
       res.send({ result: 500, error: err.message });
     });
-}; */
+};
 
 const updateCard = (req, res) => {
   console.log(req.body);
@@ -61,7 +61,8 @@ const updateCard = (req, res) => {
 };
 
 const getCardById = (req, res) => {
-  Models.Card.findById(req.params.id)
+    Models.Card.find({notes:{$regex:req.params.id, $options: "i"}}) 
+    // Models.Card.where("userID").equals(req.params.id)
     .then((data) => res.send({result: 200, data: data}))
     .catch((err) => {
       console.log(err)
@@ -81,7 +82,7 @@ const deleteCard = (req, res) => {
 module.exports = {
   getCards,
   createCard,
-  //getUserCards,
+  getUserCards,
   updateCard,
   getCardById,
   deleteCard
